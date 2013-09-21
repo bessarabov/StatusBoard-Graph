@@ -85,6 +85,8 @@ my $false = '';
 sub new {
     my ($class, %opts) = @_;
 
+    croak "Constructor new() does not need any parameters." if %opts;
+
     my $self = {};
     bless $self, $class;
 
@@ -148,6 +150,28 @@ sub set_title {
     $self->{__title} = $title;
 
     return $false;
+}
+
+=method has_title
+
+=cut
+
+sub has_title {
+    my ($self) = @_;
+
+    return defined($self->{__title}) ? $true : $false;
+}
+
+=method get_title
+
+=cut
+
+sub get_title {
+    my ($self) = @_;
+
+    croak "No title. Stopped" if not $self->has_title();
+
+    return $self->{__type};
 }
 
 =method set_type
