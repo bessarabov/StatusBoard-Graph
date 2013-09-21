@@ -186,7 +186,7 @@ mediumGray, pink, aqua, orange, or lightGray
 
 =item * Die if the title is not set
 
-=itme * has_values()
+=item * has_values()
 
 =back
 
