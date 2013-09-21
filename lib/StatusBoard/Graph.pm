@@ -62,6 +62,9 @@ This module simplifies the process of creation JSONs for Status Board App.
 Here is the specification of JSON format:
 L<http://www.panic.com/statusboard/docs/graph_tutorial.pdf>
 
+StatusBoard::Graph version numbers uses Semantic Versioning standart.
+Please visit L<http://semver.org/> to find out all about this great thing.
+
 =cut
 
 use strict;
