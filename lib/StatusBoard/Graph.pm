@@ -201,7 +201,7 @@ sub get_title {
 
     croak "No title. Stopped" if not $self->has_title();
 
-    return $self->{__type};
+    return $self->{__title};
 }
 
 =method set_type
