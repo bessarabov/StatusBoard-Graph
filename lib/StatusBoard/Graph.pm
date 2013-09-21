@@ -21,7 +21,6 @@ package StatusBoard::Graph;
             2012 => 31,
         ]
     );
-
     $sg->add_data_seq($ds1);
 
     my $ds2 = StatusBoard::Graph::DataSeq->new();
@@ -35,7 +34,6 @@ package StatusBoard::Graph;
             2012 => 29,
         ]
     );
-
     $sg->add_data_seq($ds2);
 
     $sg->write_json("cola.json");
@@ -80,6 +78,11 @@ my $false = '';
 
 =method new
 
+This a constuctor. It creates StatusBoard::Graph object. It don't need any
+parameters.
+
+    my $sg = StatusBoard::Graph->new();
+
 =cut
 
 sub new {
@@ -95,6 +98,10 @@ sub new {
 
 =method get_json
 
+Method generate and return JSON with Graph data that Status Board App can use.
+
+    my $json = $sg->get_json();
+
 =cut
 
 sub get_json {
@@ -108,6 +115,12 @@ sub get_json {
 }
 
 =method get_pretty_json
+
+The same as get_json(), but it returs JSON with identation. This method is not
+recommened to use in production code, because JSON file with pretty JSON
+weights more thatn JSON written in one line.
+
+    my $json = $sg->get_pretty_json();
 
 =cut
 
@@ -126,6 +139,12 @@ sub get_pretty_json {
 
 =method write_json
 
+Writes JSON with Graph data to file. It writes JSON data that is generated
+with get_json() method. There is no write_pretty_json() method.
+
+    my $file_name = 'population.json';
+    $sg->write_json($file_name);
+
 =cut
 
 sub write_json {
@@ -142,6 +161,12 @@ sub write_json {
 
 =method set_title
 
+Sets title for the Graph. On the same Graph there can be several
+datasequences. To set the title for for special datasequences use method
+set_title() in StatusBoard::Graph::DataSeq object.
+
+    $sg->set_title("Soft Drink Sales");
+
 =cut
 
 sub set_title {
@@ -154,6 +179,9 @@ sub set_title {
 
 =method has_title
 
+Methods checks if the StatusBoard::Graph object has title (It has if the
+method set_title has been executed).
+
 =cut
 
 sub has_title {
@@ -163,6 +191,8 @@ sub has_title {
 }
 
 =method get_title
+
+Returns the title of StatusBoard::Graph object or dies if there is no title.
 
 =cut
 
@@ -176,6 +206,12 @@ sub get_title {
 
 =method set_type
 
+Sets the type of Graph. In can be "bar" or "line". Setting the type is
+optional. If the type is not set then the Status Board will choose the type
+automaticly (depending on the graph size).
+
+    $sg->set_type("bar");
+
 =cut
 
 sub set_type {
@@ -188,6 +224,8 @@ sub set_type {
 
 =method has_type
 
+Returns bool value if the type is set.
+
 =cut
 
 sub has_type {
@@ -197,6 +235,8 @@ sub has_type {
 }
 
 =method get_type
+
+Returns the Graph type or dies if the type is not set.
 
 =cut
 
@@ -210,6 +250,21 @@ sub get_type {
 
 =method add_data_seq
 
+StatusBoard App can show several different datasequences on the same Graph.
+To show all that data you need to create StatusBoard::Graph::DataSeq object
+and to attach it to StatusBoard::Graph object.
+
+    my $ds1 = StatusBoard::Graph::DataSeq->new();
+    $ds1->set_title("X-Cola");
+    $ds1->set_values(
+        [
+            2008 => 22,
+            2009 => 24,
+        ]
+    );
+
+    $sg->add_data_seq($ds1);
+
 =cut
 
 sub add_data_seq {
@@ -221,6 +276,11 @@ sub add_data_seq {
 }
 
 =method set_min_y_value
+
+StatusBoard gives the ability to scale the Graph. You can specify the Y-axis
+to start at a particular value.
+
+    $sg->set_min_y_value('78');
 
 =cut
 
@@ -234,6 +294,8 @@ sub set_min_y_value {
 
 =method has_min_y_value
 
+Returns bool value if the minimum Y-axis value is set.
+
 =cut
 
 sub has_min_y_value {
@@ -243,6 +305,8 @@ sub has_min_y_value {
 }
 
 =method get_min_y_value
+
+Returns the mimimum Y-axis value or dies if it is not set.
 
 =cut
 
@@ -256,6 +320,10 @@ sub get_min_y_value {
 
 =method set_max_y_value
 
+You can specify the Y-axis to end at a particular value.
+
+    $sg->set_max_y_value('84');
+
 =cut
 
 sub set_max_y_value {
@@ -268,6 +336,8 @@ sub set_max_y_value {
 
 =method has_max_y_value
 
+Returns bool value if the maximum Y-axis value is set.
+
 =cut
 
 sub has_max_y_value {
@@ -277,6 +347,8 @@ sub has_max_y_value {
 }
 
 =method get_max_y_value
+
+Returns the maximum Y-axis value or dies if it is not set.
 
 =cut
 
@@ -337,5 +409,29 @@ sub __get_datasequences {
 
     return $datasequences;
 }
+
+=head1 TODO
+
+Several move things should be implemented.
+
+=over
+
+=item * refreshEveryNSeconds
+
+=item * total
+
+=item * units
+
+=item * Hiding Axis Labels
+
+=item * showEveryLabel
+
+=item * Error Reporting
+
+=item * set_type() should recieve only "bar" or "line"
+
+=back
+
+=cut
 
 1;

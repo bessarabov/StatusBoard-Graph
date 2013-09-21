@@ -72,5 +72,17 @@ sub get_values {
     return $self->{__values};
 }
 
+=head1 TODO
+
+Several move things should be done.
+
+=over
+
+=item * Check that color is one of yellow, green, red, purple, blue,
+mediumGray, pink, aqua, orange, or lightGray
+
+=back
+
+=cut
 
 1;
