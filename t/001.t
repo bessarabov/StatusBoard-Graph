@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use Test::More;
-use Test::Differences;
+use Test::JSON;
 
 use JSON;
 use StatusBoard::Graph;
@@ -75,7 +75,7 @@ $ds2->set_values(
 
 $sg->add_data_seq($ds2);
 
-eq_or_diff(
+is_json(
     $sg->get_pretty_json(),
     $expected_pretty_json,
     'StatusBoard::Graph basic usage',
