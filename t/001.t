@@ -81,10 +81,4 @@ eq_or_diff(
     'StatusBoard::Graph basic usage',
 );
 
-eq_or_diff(
-    $sg->get_pretty_json(),
-    $expected_pretty_json,
-    'StatusBoard::Graph basic usage',
-);
-
 done_testing;
