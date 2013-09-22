@@ -156,7 +156,7 @@ sub write_json {
     write_file(
         $file_name,
         {binmode => ':utf8'},
-        $self->get_pretty_json(),
+        $self->get_json(),
     );
 
     return $false;
