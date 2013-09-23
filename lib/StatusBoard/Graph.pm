@@ -38,18 +38,8 @@ package StatusBoard::Graph;
 
     $sg->write_json("cola.json");
 
-Here is the screenshot of how this JSON file looks in the Status Board App
-(the screenshot is clickable):
-
-=begin HTML
-
-<p>
-<a href="http://upload.bessarabov.ru/bessarabov/031VBX4pHw_ALPcxRTVjflnAWuc.png">
-<img src="http://upload.bessarabov.ru/bessarabov/VdagpUXEQdMslOqUyOAzwa-DOaU.png" width="500" height="125" alt="Status board graph sample" />
-</a>
-</p>
-
-=end HTML
+Here is L<the screenshot|http://upload.bessarabov.ru/bessarabov/031VBX4pHw_ALPcxRTVjflnAWuc.png>
+of how this JSON file looks in the Status Board App.
 
 =head1 DESCRIPTION
 
